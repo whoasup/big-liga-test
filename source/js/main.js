@@ -1,7 +1,16 @@
-import {ieFix} from './utils/ie-fix';
-import {iosVhFix} from './utils/ios-vh-fix';
+import {
+  ieFix
+} from './utils/ie-fix';
+import {
+  iosVhFix
+} from './utils/ios-vh-fix';
 
-import {initModals} from './modules/init-modals';
+import {
+  initContent
+} from './modules/init-content';
+import {
+  initPreloader
+} from './modules/init-preloader';
 
 // Utils
 // ---------------------------------
@@ -12,4 +21,6 @@ iosVhFix();
 // Modules
 // ---------------------------------
 
-initModals();
+window.addEventListener('load', () => {
+  initPreloader(initContent);
+});

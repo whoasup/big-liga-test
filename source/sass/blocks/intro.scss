@@ -1,0 +1,123 @@
+.intro {
+  position: relative;
+
+  display: grid;
+  align-items: center;
+  min-height: 100vh;
+  min-height: calc(100 * var(--vh, 1vh));
+  padding: 82px 35px;
+
+  transform: translateX(-100%);
+  opacity: 0;
+
+  transition: opacity $default-transition-settings, transform $default-transition-settings;
+
+  grid-column-gap: 40px;
+  grid-template-columns: 58.9% auto;
+
+  @include viewport--md {
+    padding: 0;
+
+    grid-template-columns: unset;
+
+    &.js-intro {
+      grid-template-areas: "intro";
+
+      .intro__wrapper {
+        transform: translateX(0%);
+        opacity: 1;
+
+        transition: opacity $default-transition-settings, transform $default-transition-settings;
+
+        grid-area: intro;
+      }
+
+      .intro__wrapper--blue {
+        transform: translateX(-100%);
+        visibility: visible;
+        opacity: 0;
+      }
+
+      .intro__wrapper--show {
+        transform: translateX(0%);
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &--show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  h1 {
+    margin: 0;
+
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 96px;
+    color: $color-neon-blue;
+  }
+
+  p {
+    max-width: 352px;
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 75px;
+
+    font-size: 30px;
+    line-height: 40px;
+
+    @include viewport--md {
+      margin-bottom: 100px;
+    }
+  }
+
+  .intro__wrapper {
+    z-index: 1;
+
+    background-color: transparent;
+
+    @include viewport--md {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      min-height: calc(100 * var(--vh, 1vh));
+      padding: 80px 35px;
+
+      background-color: $color-default-white;
+
+      &--blue {
+        background-color: $color-neon-blue;
+
+        p {
+          color: $color-default-white;
+        }
+
+        .white {
+          fill: $color-default-white;
+        }
+      }
+    }
+  }
+
+  .intro__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    @include viewport--md {
+      display: none;
+    }
+  }
+}
